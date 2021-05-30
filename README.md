@@ -45,7 +45,7 @@ http://localhost:3000/user/:userId/documents/ - GET
 http://localhost:3000/documents - POST
 
 # Deactivate user
-http://localhost:3000/user/deactivate - PUT
+http://localhost:3000/user/:userId/deactivate - PUT
 
 # Create user
 http://localhost:3000/auth/register - POST
