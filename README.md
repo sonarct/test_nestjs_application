@@ -39,7 +39,7 @@ Api routes
 
 ```bash
 # Get user documents
-http://localhost:3000/user/:userId/documents/ - GET
+http://localhost:3000/user/:userId/documents - GET
 
 # Create document
 http://localhost:3000/documents - POST
