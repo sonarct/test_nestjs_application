@@ -1,48 +1,35 @@
 ## Installation
 
 ```bash
+# You should run postgress and rabbitmq. Because of educational purpose there is the only postgress instance and table being shared between microservices.
+
+$ cd test_nestjs_application
+$ docker-compose up
+
+# Then you should visit main application and microservices to install dependencies.
+
+$ cd ./application
+$ npm install
+$ cd ../user-service
+$ npm install
+$ cd ../document-service
 $ npm install
 ```
 
 ## Running the app
 
 ```bash
-# postgress and rabbitmq
-$ docker-compose up
+# At first start microservices
 
-# development
+$ cd ../user-service
+$ npm run start
+$ cd ../document-service
 $ npm run start
 
-# watch mode
-$ npm run start:dev
+# Then start main application
 
-# production mode
-$ npm run start:prod
+$ cd ../application
+$ npm run start
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+The application should be accessible on http://localhost:3000
