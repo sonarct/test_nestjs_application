@@ -1,7 +1,8 @@
 ## Installation
 
 ```bash
-# You should run postgress and rabbitmq. Because of educational purpose there is the only postgress instance and table being shared between microservices.
+# You should run postgress and rabbitmq.
+# Because of educational purpose there is single postgress instance and database being shared between microservices.
 
 $ cd test_nestjs_application
 $ docker-compose up
