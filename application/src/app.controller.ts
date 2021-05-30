@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UseGuards, Req, Body, Put, Delete, Param, HttpStatus, HttpException } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards, Req, Body, Put, Param } from '@nestjs/common';
 import { RequestWithUser } from './auth/requestWithUser.interface';
 import { JwtAuthGuard } from './auth/jwtAuth.guard';
 import { AppService } from './app.service';
@@ -13,7 +13,7 @@ export class AppController {
     ) {}
 
   @UseGuards(JwtAuthGuard)
-  @Get('documents/:id')
+  @Get('user/:id/documents')
   async getUserDocuments(@Param('id') userId: string) {
     return await this.appService.getUserDocuments(Number(userId))
   }
