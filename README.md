@@ -37,23 +37,25 @@ The application should be accessible on http://localhost:3000
 
 Api routes
 
-get user documents
-http://localhost:3000/documents/:userId - GET
+```bash
+# Get user documents
+http://localhost:3000/user/:userId/documents/ - GET
 
-create document
+# Create document
 http://localhost:3000/documents - POST
 
-deactivate user
+# Deactivate user
 http://localhost:3000/user/deactivate - PUT
 
-create user
+# Create user
 http://localhost:3000/auth/register - POST
 
-log-in
+# Log-in
 http://localhost:3000/auth/log-in - POST
 
-log-out
+# Log-out
 http://localhost:3000/auth/log-out - POST
 
-get current user
+# Get current user
 http://localhost:3000/auth - GET
+```
