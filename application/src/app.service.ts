@@ -10,15 +10,15 @@ export class AppService {
   ) {
   }
 
-  async deactivateUserByEmail(email: string) {
-    if (!email) {
-      return new HttpException('Please, provide correct email', HttpStatus.BAD_REQUEST)
+  async deactivateUserById(userId: string) {
+    if (!userId) {
+      return new HttpException('Please, provide correct user id', HttpStatus.BAD_REQUEST)
     }
 
     try {
       const user = await this.usersService.send(
-        { cmd: 'get_user_by_email' },
-        { email }
+        { cmd: 'get_user_by_id' },
+        { userId }
       ).toPromise()
 
       if (!user) {
@@ -27,18 +27,18 @@ export class AppService {
 
       await this.usersService.send(
         { cmd: 'deactivate_user' },
-        { userId: user.id }
+        { userId }
       ).toPromise()
 
       this.documentsService.send(
         { cmd: 'remove_user_documents' },
-        { userId: user.id }
+        { userId }
       ).toPromise()
     } catch (error) {
-      return new HttpException(`Problems while deactivating user ${email}`, HttpStatus.INTERNAL_SERVER_ERROR)
+      return new HttpException(`Problems while deactivating user ${userId}`, HttpStatus.INTERNAL_SERVER_ERROR)
     }
     
-    return `User with email ${email} has been deactivated`
+    return `User ${userId} has been deactivated`
   }
 
   async removeUserDocuments(userId: number) {

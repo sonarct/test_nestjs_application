@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UseGuards, Req, Body, Put, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post, UseGuards, Req, Body, Put } from '@nestjs/common';
 import { RequestWithUser } from './auth/requestWithUser.interface';
 import { JwtAuthGuard } from './auth/jwtAuth.guard';
 import { AppService } from './app.service';
@@ -25,11 +25,13 @@ export class AppController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put('user/deactivate')
-  async deactivate(@Req() request: RequestWithUser, @Body() data: { email: string }) {
-    const result = await this.appService.deactivateUserByEmail(data.email)
+  @Put('user/:id/deactivate')
+  async deactivate(@Req() request: RequestWithUser, @Param('id') id: string) {
+    const result = await this.appService.deactivateUserById(id)
 
-    if (typeof result === 'string' && data.email === request.user.email) {
+    const isDeactivatedUserCurrentUser = Number(id) === request.user.id && typeof result === 'string'
+
+    if (isDeactivatedUserCurrentUser) {
       request.res.setHeader('Set-Cookie', this.authService.getCookieForLogOut());
     }
 
