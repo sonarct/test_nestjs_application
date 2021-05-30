@@ -38,22 +38,29 @@ The application should be accessible on http://localhost:3000
 Api routes
 
 get user documents
-http://localhost:3000/documents/:userId - GET
+
+http://localhost:3000/user/:userId/documents/ - GET
 
 create document
+
 http://localhost:3000/documents - POST
 
 deactivate user
+
 http://localhost:3000/user/deactivate - PUT
 
 create user
+
 http://localhost:3000/auth/register - POST
 
 log-in
+
 http://localhost:3000/auth/log-in - POST
 
 log-out
+
 http://localhost:3000/auth/log-out - POST
 
 get current user
+
 http://localhost:3000/auth - GET
